@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная — Клининговая компания «Аю»{% endblock %}
+
+{% block content %}
+<section style="background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%); color: white; padding: 100px 0; text-align: center;">
+    <div class="container">
+        <h1 style="font-size: 48px; font-weight: 800; margin-bottom: 20px;">Кристальная чистота вашего дома с «Аю»</h1>
+        <p style="font-size: 20px; max-width: 700px; margin: 0 auto 40px; opacity: 0.9;">
+            Доверьте уборку профессионалам. Быстрый расчет стоимости, выезд в день заказа и гарантированное качество.
+        </p>
+        <a href="/book" class="btn btn-primary" style="background-color: #03045e;">Рассчитать стоимость</a>
+    </div>
+</section>
+
+<section style="padding: 80px 0;">
+    <div class="container">
+        <h2 style="text-align: center; font-size: 36px; color: #03045e; margin-bottom: 50px;">Почему выбирают компанию «Аю»?</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+            <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); border: 1px solid #e2e8f0;">
+                <div style="font-size: 40px; margin-bottom: 15px;">🧼</div>
+                <h3 style="margin-bottom: 10px; color: #0077b6;">Эко-средства</h3>
+                <p style="color: #64748b;">Используем только гипоаллергенные моющие средства, полностью безопасные для детей и питомцев.</p>
+            </div>
+            <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); border: 1px solid #e2e8f0;">
+                <div style="font-size: 40px; margin-bottom: 15px;">🛡️</div>
+                <h3 style="margin-bottom: 10px; color: #0077b6;">Надежность</h3>
+                <p style="color: #64748b;">Все клинеры проходят отбор, обучение стандартам компании и проверку службой безопасности</p>
+            </div>
+            <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); border: 1px solid #e2e8f0;">
+                <div style="font-size: 40px; margin-bottom: 15px;">💯</div>
+                <h3 style="margin-bottom: 10px; color: #0077b6;">Идеальный результат</h3>
+                <p style="color: #64748b;">Мы нацелены на безупречную чистоту и ответственно подходим к каждому заказу.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

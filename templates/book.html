@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}Забронировать уборку — Клининговая компания «Аю»{% endblock %}
+
+{% block extra_styles %}
+    .booking-wrapper {
+        max-width: 600px;
+        margin: 60px auto;
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        border: 1px solid #e2e8f0;
+    }
+    .booking-wrapper h2 {
+        color: #03045e;
+        margin-bottom: 25px;
+        font-size: 26px;
+        text-align: center;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #4a5568;
+    }
+    .form-group input, .form-group textarea, .form-group select {
+        width: 100%;
+        padding: 12px 16px;
+        border-radius: 8px;
+        border: 1px solid #cbd5e1;
+        font-size: 16px;
+        outline: none;
+        transition: 0.2s;
+        box-sizing: border-box;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+        border-color: #00b4d8;
+    }
+    
+    /* Стили заглушки авторизации */
+    .auth-required-box {
+        text-align: center;
+        max-width: 550px;
+        margin: 80px auto;
+        padding: 50px 40px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        border: 1px solid #e2e8f0;
+    }
+    .auth-icon {
+        font-size: 54px;
+        margin-bottom: 20px;
+    }
+    .auth-required-box h2 {
+        color: #03045e;
+        margin-bottom: 15px;
+        font-size: 26px;
+    }
+    .auth-required-box p {
+        color: #64748b;
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% if current_user.is_authenticated %}
+        <!-- ДОСТУПНО ДЛЯ АВТОРИЗОВАННЫХ -->
+        <div class="booking-wrapper">
+            <h2>🧼 Оформление бронирования</h2>
+            <form action="/book" method="POST">
+                <div class="form-group">
+                    <label>Имя заявителя</label>
+                    <input type="text" name="name" value="{{ current_user.name }}" readonly style="background-color: #f8fafc; color: #64748b;">
+                </div>
+                
+                <div class="form-group">
+                    <label>Контактный телефон</label>
+                    <input type="text" name="phone" value="{{ current_user.phone }}" readonly style="background-color: #f8fafc; color: #64748b;">
+                </div>
+
+                <div class="form-group">
+                    <label>Что необходимо убрать?</label>
+                    <select name="details" required>
+                        <option value="" disabled selected>Выберите тип услуги...</option>
+                        <option value="Поддерживающая уборка квартиры">Поддерживающая уборка квартиры</option>
+                        <option value="Генеральная уборка квартиры">Генеральная уборка квартиры</option>
+                        <option value="Уборка после ремонта">Уборка после ремонта</option>
+                        <option value="Комплексная дезинфекция">Комплексная дезинфекция</option>
+                        <option value="Уборка офисных помещений">Уборка офисных помещений</option>
+                        <option value="Другое (индивидуальный расчет)">Другое (индивидуальный расчет)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Примерный объем или площадь помещений (комментарий)</label>
+                    <textarea name="comment" rows="3" placeholder="Например: 2-комнатная квартира, 55 кв. м, помыть окна..." style="resize: vertical;"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 16px; padding: 14px;">Отправить заявку</button>
+            </form>
+        </div>
+    {% else %}
+        <!-- ЗАГЛУШКА ДЛЯ НЕАВТОРИЗОВАННЫХ (КАК В ОТЗЫВАХ) -->
+        <div class="auth-required-box">
+            <div class="auth-icon">🔒</div>
+            <h2>Требуется авторизация</h2>
+            <p>Чтобы оформить бронирование клининга и отслеживать статус выполнения в своем личном кабинете, пожалуйста, войдите в личный аккаунт или зарегистрируйтесь.</p>
+            <button onclick="openModal('login')" class="btn btn-primary" style="padding: 12px 35px;">Войти в аккаунт</button>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

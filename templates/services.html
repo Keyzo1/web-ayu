@@ -1,0 +1,249 @@
+{% extends "base.html" %}
+
+{% block title %}Услуги и цены — Клининговая компания «Аю»{% endblock %}
+
+{% block extra_styles %}
+    .services-hero {
+        background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
+        color: white;
+        padding: 60px 0;
+        text-align: center;
+        border-radius: 0 0 30px 30px;
+        margin-bottom: 40px;
+    }
+    .services-hero h1 {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+    .services-hero p {
+        font-size: 18px;
+        opacity: 0.9;
+    }
+    .services-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+    .service-card {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        border: 1px solid #e2e8f0;
+    }
+    .service-card h2 {
+        color: #03045e;
+        font-size: 22px;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #f1f5f9;
+        padding-bottom: 10px;
+    }
+    .price-list {
+        list-style: none;
+    }
+    .price-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px dashed #e2e8f0;
+    }
+    .price-item:last-child {
+        border-bottom: none;
+    }
+    .price-name {
+        color: #4a5568;
+        font-weight: 500;
+    }
+    .price-value {
+        color: #00b4d8;
+        font-weight: bold;
+        white-space: nowrap;
+    }
+    .booking-action-block {
+        text-align: center;
+        margin: 50px auto 60px;
+        padding: 30px;
+        background: #f0f9ff;
+        border: 1px dashed #00b4d8;
+        border-radius: 20px;
+        max-width: 600px;
+    }
+    .booking-action-block p {
+        font-size: 16px;
+        color: #4a5568;
+        margin-bottom: 20px;
+    }
+    
+    .cabinet-section {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        border: 1px solid #e2e8f0;
+        margin-top: 50px;
+        margin-bottom: 60px;
+    }
+    .cabinet-section h2 {
+        color: #03045e;
+        margin-bottom: 25px;
+        font-size: 26px;
+    }
+    .orders-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+    .orders-table th {
+        background-color: #f8fafc;
+        color: #4a5568;
+        text-align: left;
+        padding: 14px;
+        font-weight: 600;
+        border-bottom: 2px solid #e2e8f0;
+    }
+    .orders-table td {
+        padding: 14px;
+        border-bottom: 1px solid #e2e8f0;
+        color: #333;
+    }
+    .btn-delete {
+        background: #fff5f5;
+        color: #e53e3e;
+        border: 1px solid #fed7d7;
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.2s;
+    }
+    .btn-delete:hover {
+        background: #e53e3e;
+        color: white;
+    }
+    
+    @media (max-width: 768px) {
+        .services-container {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .services-hero h1 {
+            font-size: 28px;
+        }
+        .orders-table th, .orders-table td {
+            padding: 8px;
+            font-size: 14px;
+        }
+    }
+{% endblock %}
+
+{% block content %}
+<div class="services-hero">
+    <div class="container">
+        <h1>Наши услуги и прозрачные цены</h1>
+        <p>Выберите подходящий вид уборки. Никаких скрытых доплат — вы платите только за результат.</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="services-container">
+        <!-- Карточка 1 -->
+        <div class="service-card">
+            <h2>🏠 Жилые помещения</h2>
+            <ul class="price-list">
+                <li class="price-item">
+                    <span class="price-name">Поддерживающая уборка кв.</span>
+                    <span class="price-value">от 1 900 ₽</span>
+                </li>
+                <li class="price-item">
+                    <span class="price-name">Генеральная уборка кв.</span>
+                    <span class="price-value">от 3 500 ₽</span>
+                </li>
+                <li class="price-item">
+                    <span class="price-name">Уборка после ремонта</span>
+                    <span class="price-value">от 4 900 ₽</span>
+                </li>
+                <li class="price-item">
+                    <span class="price-name">Дезинфекция ванной и кухни</span>
+                    <span class="price-value">от 2 500 ₽</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Карточка 2 -->
+        <div class="service-card">
+            <h2>🏢 Коммерческая недвижимость</h2>
+            <ul class="price-list">
+                <li class="price-item">
+                    <span class="price-name">Уборка офисов (за м²)</span>
+                    <span class="price-value">от 80 ₽ / м²</span>
+                </li>
+                <li class="price-item">
+                    <span class="price-name">Генеральная уборка помещений</span>
+                    <span class="price-value">от 150 ₽ / м²</span>
+                </li>
+                <li class="price-item">
+                    <span class="price-name">Уборка после строительных работ</span>
+                    <span class="price-value">от 220 ₽ / м²</span>
+                </li>
+                <li class="price-item">
+                    <span class="price-name">Мытье витрин и фасадов зданий</span>
+                    <span class="price-value">от 190 ₽ / м²</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- БЛОК ЛИЧНОГО КАБИНЕТА С ЗАКАЗАМИ -->
+    {% if current_user.is_authenticated %}
+    <div class="cabinet-section">
+        <h2>💼 Личный кабинет: Ваши заказы</h2>
+        {% set user_has_orders = false %}
+        
+        <table class="orders-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Клиент</th>
+                    <th>Телефон</th>
+                    <th>Детали заказа</th>
+                    <th>Стоимость</th>
+                    <th>Действие</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    {% if current_user.role == 'admin' or current_user.name == order.name %}
+                        {% set user_has_orders = true %}
+                        <tr>
+                            <td>#{{ order.id }}</td>
+                            <td>{{ order.name }}</td>
+                            <td>{{ order.phone }}</td>
+                            <td>{{ order.details }}</td>
+                            <td style="font-weight: bold; color: #0077b6;">{{ order.price }}</td>
+                            <td>
+                                <form action="/delete_order/{{ order.id }}" method="POST" style="margin:0;">
+                                    <button type="submit" class="btn-delete">Отменить</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% if not user_has_orders %}
+            <p style="text-align: center; color: #64748b; margin-top: 20px;">У вас пока нет активных заказов на уборку.</p>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- БЛОК С КНОПКОЙ ЗАБРОНИРОВАТЬ В САМОМ НИЗУ -->
+    <div class="booking-action-block">
+        <p>Определились с выбором или хотите рассчитать точную стоимость индивидуального заказа?</p>
+        <a href="/book" class="btn btn-primary" style="font-size: 16px; padding: 14px 40px; box-shadow: 0 4px 14px rgba(0, 180, 216, 0.3);">Забронировать уборку</a>
+    </div>
+</div>
+{% endblock %}
